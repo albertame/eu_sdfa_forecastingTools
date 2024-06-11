@@ -16,7 +16,8 @@
 
 #### Step 2: define a target variable
 - Systemic crisis dummy (binary variable)
-- Financial stress index 
+- Financial stress index
+- Inflation
 
 #### Step 3: feature selection
 #### Step 4: choose models for initial benchmarking 
@@ -37,5 +38,5 @@
 #### Step 7: Hyperparameter tuning
 #### Step 8: Integrate MLFLOW to store experiments results
 
-#### Step 9: evaluate the modelsn peformance
-#### Step 10: visualise the results for the end-user
+#### Step 8: evaluate the modelsn peformance
+#### Step 9: visualise the results for the end-user
