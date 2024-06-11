@@ -36,5 +36,5 @@
 #### Step 6: Hyperparameter tuning
 #### Step 7: Integrate MLFLOW to store experiments results
 
-#### Step 8: evaluate the modelsn peformance
+#### Step 8: evaluate the models peformance
 #### Step 9: visualise the results for the end-user
