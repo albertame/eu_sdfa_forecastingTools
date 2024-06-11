@@ -16,7 +16,8 @@
 
 #### Step 2: define a target variable
 - Systemic crisis dummy (binary variable)
-- Financial stress index 
+- Financial stress index
+- Inflation
 
 #### Step 3: feature selection
 #### Step 4: choose models for initial benchmarking 
