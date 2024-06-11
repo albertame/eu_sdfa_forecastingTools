@@ -28,13 +28,14 @@
 - VAR
 - Logistic Regression
 
+#### Step 5: choose forecasting horizon
 #### Step 5: choose evaluation metrics
 - Accuracy score
 - F1-score
 - RMSE
 
-#### Step 6: Hyperparameter tuning
-#### Step 7: Integrate MLFLOW to store experiments results
+#### Step 7: Hyperparameter tuning
+#### Step 8: Integrate MLFLOW to store experiments results
 
-#### Step 8: evaluate the modelsn peformance
-#### Step 9: visualise the results for the end-user
+#### Step 9: evaluate the modelsn peformance
+#### Step 10: visualise the results for the end-user
