@@ -20,7 +20,7 @@ def calculate_growth_rates(df, growth_rate_variables):
         df[growth_rate_variable+"_yoy"] = df[growth_rate_variable].pct_change(fill_method=None, periods=4)*100
     return df
 
-def fx_volatility(df, window, volatility_variable):
+def give_sliding_window_volatility(df, window, volatility_variable):
     df[volatility_variable+"_std"] =  df[volatility_variable].rolling(window).std()*(window**0.5)
     return df
 
