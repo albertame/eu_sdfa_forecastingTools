@@ -2,6 +2,7 @@
 import seaborn as sns
 import pandas as pd
 import numpy as np
+import country_converter as coco
 
 def read_data(file, country):
     df = pd.read_csv(file)
@@ -43,7 +44,7 @@ def add_systemic_risk_dummy(data_file, dummy_file, country):
     df = df.dropna(axis=1, how = 'all')
     return df
 
-def add_missing_variables(df):
+def add_missing_variables(df, country):
     data_ea = pd.read_csv('./data/data_input_quarterly.csv')
     cols2add = ['date','policyRate', 'EAtermSpread']
     data_ea = data_ea[cols2add][data_ea['iso2']=='EA']
@@ -58,6 +59,16 @@ def add_missing_variables(df):
     data_ea.index = data_ea['date']
     data_us.index = data_us['date']
 
+    data_fci = pd.read_excel('./data/financial_condition_index.xlsx', sheet_name=None)
+    data_fci['FCIs']['country'] = coco.convert(data_fci['FCIs']['country'], to='ISO2')
+    data_cc_ew_fci = data_fci['FCIs'][data_fci['FCIs']['country'] == country][['date','country', 'ew_fci']]
+    data_cc_ew_fci.rename(columns = {'country':'iso2', 'ew_fci':'financialConditionIndex'}, inplace = True)
+    data_cc_ew_fci.index = pd.to_datetime(data_cc_ew_fci['date'])
+    data_q_fci = pd.DataFrame()
+    data_q_fci['financialConditionIndex'] = data_cc_ew_fci['financialConditionIndex'].resample('QS').mean()
+    #data_q_fci['iso2'] = country
+    
+    df['financialConditionIndex'] = data_q_fci['financialConditionIndex']
     df['policyRate'] = df['policyRate'].fillna(data_ea['policyRate'])
     df['EAtermspread'] = data_ea['EAtermSpread']
     df['USpolicyRate'] = data_us['policyRate']
