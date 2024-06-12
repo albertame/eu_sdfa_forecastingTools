@@ -32,50 +32,42 @@ def translate_frequency(intervall="quarterly"):
         return "Q"
 
 def get_processed_df(df, country="DE", time_intervall="quarterly", generate_graphs=False, verbose=False):
-    try:
-        df = give_sliding_window_volatility(df, 4, "fx")
-        yoy_variables = ["bankCreditPnfs", "totalCreditPnfsLCY", "totalCreditPnfs2GDP"]
-        df = calculate_growth_rates(df, yoy_variables)
-        df = df.drop(yoy_variables, axis=1)
-        
-        lag2_variables = [f"{col}_yoy" for col in ["bankCreditPnfs", "totalCreditPnfsLCY", "totalCreditPnfs2GDP"]]
-        df = get_lagged_variables(df, 2, lag2_variables)
-        df = df.drop(lag2_variables, axis=1)
-        lag1_variables = [f"{col}_yoy" for col in ["cpi"]]
-        df = get_lagged_variables(df, 1, lag1_variables)
-        df = df.drop(lag1_variables, axis=1)
-        if verbose:
-            print("successful added lag")
+    df = give_sliding_window_volatility(df, 4, "fx")
+    yoy_variables = ["bankCreditPnfs", "totalCreditPnfsLCY", "totalCreditPnfs2GDP"]
+    df = calculate_growth_rates(df, yoy_variables)
+    df = df.drop(yoy_variables, axis=1)
+    
+    lag2_variables = [f"{col}_yoy" for col in ["bankCreditPnfs", "totalCreditPnfsLCY", "totalCreditPnfs2GDP"]]
+    df = get_lagged_variables(df, 2, lag2_variables)
+    df = df.drop(lag2_variables, axis=1)
+    lag1_variables = [f"{col}_yoy" for col in ["cpi"]]
+    df = get_lagged_variables(df, 1, lag1_variables)
+    df = df.drop(lag1_variables, axis=1)
+    if verbose:
+        print("successful added lag")
 
-        df = add_missing_variables(df, country)
-        if verbose:
-            print("Added missing values")
-        df['financialStressIndex_movingAverage'] = df['financialStressIndex'].rolling(12).mean()
-        if verbose:
-            print("Imputed moving average")
-        df_dummies = pd.read_csv('dummy_final.csv')
-        if verbose:
-            print("Successful read of dummy .csv")
-        df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
-        if verbose:
-            print("Added systemic risk dummy")
+    df = add_missing_variables(df, country)
+    if verbose:
+        print("Added missing values")
+    df['financialStressIndex_movingAverage'] = df['financialStressIndex'].rolling(12).mean()
+    if verbose:
+        print("Imputed moving average")
+    df_dummies = pd.read_csv('dummy_final.csv')
+    if verbose:
+        print("Successful read of dummy .csv")
+    df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
+    if verbose:
+        print("Added systemic risk dummy")
 
-        if generate_graphs:
-            for col in df.loc[df[df.index>'1970'].index, ~df.columns.isin(list(df.filter(regex = 'lag').columns))]:
-                plt.plot(df[col][df.index>'1970'])
-                plt.title([col])
-                plt.show()
-        
-        return df
-    except:
-         print("Something went wrong")
+    if generate_graphs:
+        for col in df.loc[df[df.index>'1970'].index, ~df.columns.isin(list(df.filter(regex = 'lag').columns))]:
+            plt.plot(df[col][df.index>'1970'])
+            plt.title([col])
+            plt.show()
+    
+    df.index = df['date']
+    df.drop('date', axis=1, inplace = True)
     return df
-# %% Subselect data
-def subselect_data(df, start_year = '1970'):
-    df = df[df.index > start_year]
-    df = df.dropna(axis=1)
-    return df
-
 
 # %% Run process
 COUNTRY = 'DE'

@@ -48,10 +48,9 @@ def add_systemic_risk_dummy(data_file, dummy_file, country):
     df = df.dropna(axis=1, how = 'all')
     return df
 
-
-def add_systemic_risk_dummy_with_df(df, dummy_file, country="DE"):
+def add_systemic_risk_dummy_with_df(df, dummy_df, country="DE"):
     print("subselect dummy in field")
-    dummy_country = dummy_file[dummy_country['iso2']==country]
+    dummy_country = dummy_df[dummy_df['iso2']==country]
     dummy_country['date'] = pd.to_datetime(dummy_country['date.1'])
     print("found dummy country list")
     df = pd.merge(df, dummy_country, on = ['iso2', 'date'], how= 'left')
@@ -61,6 +60,7 @@ def add_systemic_risk_dummy_with_df(df, dummy_file, country="DE"):
     df = df.dropna(axis=1, how = 'all')
 
     return df
+
 
 def add_missing_variables(df, country):
     data_ea = pd.read_csv('./data/data_input_quarterly.csv')
@@ -92,12 +92,11 @@ def add_missing_variables(df, country):
     df['USpolicyRate'] = data_us['policyRate']
     df['UStermSpread'] = data_us['UStermSpread']
 
-    df.index = df['date']
-    df.drop('date', axis=1, inplace = True)
+
     return df
 
 def retrieved_processed_data(country_iso="DE", intervall="quarterly"):
-    return pd.read_csv(f"./data_{intervall}_{country_iso}.csv")
+    return pd.read_csv(f"./data_{intervall}_{country_iso}.csv", index_col="date")
 
 def get_xy_split(df, exclusion_x = ["is_systemic_crisis","month", "cpi_yoy_growthRate"], y_variable="is_systemic_crisis"):
     X_without = df.drop(exclusion_x, axis=1)
@@ -109,18 +108,7 @@ def subselect_data(df, start_year = '1970'):
     df = df.dropna(axis=1)
     return df
 
-def add_systemic_risk_dummy_with_df(df, dummy_df, country="DE"):
-    print("subselect dummy in field")
-    dummy_country = dummy_df[dummy_df['iso2']==country]
-    dummy_country['date'] = pd.to_datetime(dummy_country['date.1'])
-    print("found dummy country list")
-    df = pd.merge(df, dummy_country, on = ['iso2', 'date'], how= 'left')
 
-    df = df.drop(['iso2','date.1_x','month','date.1_y','financialStressDummy'], axis=1)
-    df['is_systemic_crisis'] = df['is_systemic_crisis'].fillna(0)
-    df = df.dropna(axis=1, how = 'all')
-
-    return df
 
 def translate_frequency(intervall="quarterly"):
     if intervall == "quarterly":
