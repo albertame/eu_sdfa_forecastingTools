@@ -6,19 +6,15 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 
-def retrieved_processed_data(country_iso="DE", intervall="quarterly"):
-    return pd.read_csv(f"./data_{intervall}_{country_iso}.csv")
+from utils import retrieved_processed_data
+from utils import get_xy_split
 
-def get_xy_split(df, exclusion_x = ["is_systemic_crisis","month", "cpi_yoy_growthRate"], y_variable="is_systemic_crisis"):
-    X_without = df.drop(exclusion_x, axis=1)
-    y = df[y_variable]
-    return X_without, y
 #%% Retrieving processing data
 df = retrieved_processed_data("DE", "quarterly")
 
 # %% Split data
 Y_VARIABLE = "is_systemic_crisis"
-X_EXCLUSION = ["is_systemic_crisis","month", "cpi_yoy_growthRate"]
+X_EXCLUSION = ["is_systemic_crisis","month"]
 x, y = get_xy_split(df, X_EXCLUSION, Y_VARIABLE)
 
 # %% Standardize data
