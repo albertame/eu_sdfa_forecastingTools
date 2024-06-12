@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 matplotlib.style.use('ggplot')
 
 #%%
-os.chdir(r'/Users/albertoamerico/Documents/eusdfa/git/eu_sdfa_forecastingTools')
+os.chdir(os.getcwd())
 from utils import read_data
 from utils import calculate_growth_rates
 from utils import get_lagged_variables
@@ -17,6 +17,7 @@ from utils import give_sliding_window_volatility
 # %%
 file = './data/data_input_quarterly.csv'
 country = 'DE'
+
 df = read_data(file, country)
 #%% Transform the data
 yoy_variables = ["bankCreditPnfs", "totalCreditPnfsLCY", "totalCreditPnfs2GDP"]
@@ -87,7 +88,9 @@ cols2reg = ['policyRate', 'resPropPrice', 'cpi_yoy', 'fx', 'financialStressIndex
  'fx_std', 'is_systemic_crisis', 'EAtermspread', 'USpolicyRate', 'UStermSpread']
 
 for col in data.loc[data[data.index>'1970'].index, ~data.columns.isin(list(data.filter(regex = 'lag').columns))]:
-plt.plot(data[col][data.index>'1970'])
-plt.title([col])
-plt.show()
+    plt.plot(data[col][data.index>'1970'])
+    plt.title([col])
+    plt.show()
+# %% save total dataset
+data.to_csv('data_processed_quaterly_DE.csv')
 # %%
