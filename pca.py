@@ -1,29 +1,40 @@
+#%% Load functions
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
+from sklearn.model_selection import train_test_split
 
-def retrieved_processed_data(country_iso="DE", intervall="quaterly"):
-    return pd.read_csv(f"./data_{intervall}_{country_iso}.csv")
+from utils import retrieved_processed_data
+from utils import get_xy_split
 
-def get_xy_split(df):
-    return
+#%% Retrieving processing data
+df = retrieved_processed_data("DE", "quarterly")
 
-# X_without = df_cleaned.drop(["is_systemic_crisis","month", "cpi_yoy_growthRate"], axis=1)
+# %% Split data
+Y_VARIABLE = "is_systemic_crisis"
+X_EXCLUSION = ["is_systemic_crisis","month"]
+x, y = get_xy_split(df, X_EXCLUSION, Y_VARIABLE)
 
-# X = StandardScaler().fit_transform(X_without)
+# %% Standardize data
+X = StandardScaler().fit_transform(x)
+# %% PCA - data
+principalComponents = pca.fit_transform(X)
 
-# pca = PCA()
-# principalComponents = pca.fit_transform(X)
+# %% Graph PCA
+pca = PCA()
+principalComponents = pca.fit_transform(X)
 
-# features_length = 12
+features_length = 12
+features = range(1,features_length)
+plt.bar(features, pca.explained_variance_ratio_[:features_length-1], color='black')
+plt.xlabel('PCA features')
+plt.ylabel('variance %')
+plt.xticks(features)
+plt.figure(figsize=(20, 2))
 
-# features = range(1,features_length)
-# plt.bar(features, pca.explained_variance_ratio_[:features_length-1], color='black')
-# plt.xlabel('PCA features')
-# plt.ylabel('variance %')
-# plt.xticks(features)
-# plt.figure(figsize=(20, 2))
+PCA_components = pd.DataFrame(principalComponents)
 
-# PCA_components = pd.DataFrame(principalComponents)
+# %% Graph PC
+df.columns

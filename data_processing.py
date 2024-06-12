@@ -17,6 +17,7 @@ from utils import give_sliding_window_volatility
 # %%
 file = './data/data_input_quarterly.csv'
 country = 'DE'
+
 df = read_data(file, country)
 #%% Transform the data
 yoy_variables = ["bankCreditPnfs", "totalCreditPnfsLCY", "totalCreditPnfs2GDP"]
@@ -90,4 +91,6 @@ for col in data.loc[data[data.index>'1970'].index, ~data.columns.isin(list(data.
     plt.plot(data[col][data.index>'1970'])
     plt.title([col])
     plt.show()
+# %% save total dataset
+data.to_csv('data_processed_quaterly_DE.csv')
 # %%
