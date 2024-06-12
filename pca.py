@@ -36,12 +36,14 @@ plt.figure(figsize=(20, 2))
 PCA_components = pd.DataFrame(principalComponents)
 # %% Graph PCA
 np.sum(pca.explained_variance_ratio_[:5])
-
-
 # %% Graph PCA
 from sklearn.linear_model import LogisticRegression
 FILTER_NUMBER = len(PCA_components)-80
 PCANUMBER = 5
+
+# X_TRAIN = X_SCALED[:FILTER_NUMBER]
+# X_GOLD = X_SCALED[FILTER_NUMBER:]
+
 X_TRAIN = PCA_components.iloc[:FILTER_NUMBER,:PCANUMBER]
 X_GOLD = PCA_components.iloc[FILTER_NUMBER:,:PCANUMBER]
 Y_TRAIN = y_SPLIT[:FILTER_NUMBER]
