@@ -84,15 +84,11 @@ def add_missing_variables(df, country):
     data_cc_ew_fci.index = pd.to_datetime(data_cc_ew_fci['date'])
     data_q_fci = pd.DataFrame()
     data_q_fci['financialConditionIndex'] = data_cc_ew_fci['financialConditionIndex'].resample('QS').mean()
-    #data_q_fci['iso2'] = country
-    
     df['financialConditionIndex'] = data_q_fci['financialConditionIndex']
     df['policyRate'] = df['policyRate'].fillna(data_ea['policyRate'])
     df['EAtermspread'] = data_ea['EAtermSpread']
     df['USpolicyRate'] = data_us['policyRate']
     df['UStermSpread'] = data_us['UStermSpread']
-
-
     return df
 
 def retrieved_processed_data(country_iso="DE", intervall="quarterly"):

@@ -15,11 +15,13 @@ from utils import add_missing_variables
 
 # %% Data processing function
 def add_systemic_risk_dummy_with_df(df, dummy_df, country="DE"):
+    df = df.reset_index(drop=True)
     print("subselect dummy in field")
     dummy_country = dummy_df[dummy_df['iso2']==country]
     dummy_country['date'] = pd.to_datetime(dummy_country['date.1'])
+    df['date'] = pd.to_datetime(df['date'])
     print("found dummy country list")
-    df = pd.merge(df, dummy_country, on = ['iso2', 'date'], how= 'left')
+    df = pd.merge(df, dummy_country, on=['iso2', 'date'], how= 'left')
 
     df = df.drop(['iso2','date.1_x','month','date.1_y','financialStressDummy'], axis=1)
     df['is_systemic_crisis'] = df['is_systemic_crisis'].fillna(0)
@@ -52,6 +54,7 @@ def get_processed_df(df, country="DE", time_intervall="quarterly", generate_grap
     df['financialStressIndex_movingAverage'] = df['financialStressIndex'].rolling(12).mean()
     if verbose:
         print("Imputed moving average")
+    
     df_dummies = pd.read_csv('dummy_final.csv')
     if verbose:
         print("Successful read of dummy .csv")
@@ -77,3 +80,6 @@ df = read_data(FILE, COUNTRY)
 df = get_processed_df(df, COUNTRY,TIME_INTERVALL, verbose=True)
 # %%
 df.to_csv(f'data_processed_{TIME_INTERVALL}_{COUNTRY}.csv', index=True)
+
+# %%
+df
