@@ -8,10 +8,12 @@ from sklearn.model_selection import train_test_split
 
 from utils import retrieved_processed_data
 from utils import get_xy_split
+from utils import drop_na_and_irrelevant_collumns
 
 #%% Retrieving processing data
 df = retrieved_processed_data("DE", "quarterly")
-
+# %% drop NA
+df = drop_na_and_irrelevant_collumns(df, 1960)
 # %% Split data
 Y_VARIABLE = "is_systemic_crisis"
 X_EXCLUSION = ["is_systemic_crisis","month"]

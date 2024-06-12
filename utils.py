@@ -79,9 +79,16 @@ def add_missing_variables(df, country):
     return df
 
 def retrieved_processed_data(country_iso="DE", intervall="quarterly"):
-    return pd.read_csv(f"./data_{intervall}_{country_iso}.csv")
+    df =  pd.read_csv(f"./data_{intervall}_{country_iso}.csv")
+    df['date'] =  pd.to_datetime(df['date'])
+    df.index =  pd.to_datetime(df['date'])
+    df.drop('date', axis=1, inplace = True)
+    return df
 
 def get_xy_split(df, exclusion_x = ["is_systemic_crisis","month", "cpi_yoy_growthRate"], y_variable="is_systemic_crisis"):
     X_without = df.drop(exclusion_x, axis=1)
     y = df[y_variable]
     return X_without, y
+
+def drop_na_and_irrelevant_collumns(df, year=1960):
+    return df[df.index > f'{year}-01-01'].drop(columns=["iso2", "date.1"]).dropna(axis=1)
