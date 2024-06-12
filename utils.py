@@ -17,7 +17,7 @@ def get_lagged_variables(df, lags, variables):
 
 def calculate_growth_rates(df, growth_rate_variables):
     for growth_rate_variable in growth_rate_variables:
-        df[growth_rate_variable+"_growthRate"] = df[growth_rate_variable].pct_change(fill_method=None, periods=4)*100
+        df[growth_rate_variable+"_yoy"] = df[growth_rate_variable].pct_change(fill_method=None, periods=4)*100
     return df
 
 def fx_volatility(df, window, volatility_variable):
