@@ -12,7 +12,7 @@ os.chdir(r'/Users/albertoamerico/Documents/eusdfa/git/eu_sdfa_forecastingTools')
 from utils import read_data
 from utils import calculate_growth_rates
 from utils import get_lagged_variables
-from utils import fx_volatility
+from utils import give_sliding_window_volatility
 
 # %%
 file = './data/data_input_quarterly.csv'
@@ -28,6 +28,10 @@ df = df.drop(lag2_variables, axis=1)
 lag1_variables = [f"{col}_yoy" for col in ["cpi"]]
 df = get_lagged_variables(df, 1, lag1_variables)
 df = df.drop(lag1_variables, axis=1)
+
+
+df = give_sliding_window_volatility(df, 4, "fx")
+
 df.to_csv(f'data_quarterly_{country}.csv', index = False)
 
 #%% 
