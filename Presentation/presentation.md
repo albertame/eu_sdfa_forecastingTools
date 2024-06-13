@@ -2,12 +2,6 @@
 marp: true
 class: invert
 title: Forcasting and nowcasting
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
 ---
 
 <!--
@@ -22,6 +16,14 @@ Markdown and html rules apply
 # Forcasting and nowcasting
 
 ### Towards predicting the next financial crisis
+
+#### Mentor:
+
+Alberto Americo
+
+#### Participants:
+
+Tiago, Vittorio, Georgios, Nikolaos, Robert, Francesco, Thomas
 
 ---
 
@@ -55,7 +57,7 @@ Descriptive statistics
 
 ---
 
-# 1.1 Data preperation pipeline
+# Data preperation pipeline
 
 ```python
 COUNTRY = 'DE'
@@ -70,7 +72,7 @@ df = subselect_data(df)
 
 ---
 
-# 1.2 Data preperation pipeline
+# Data preperation pipeline
 
 ```python
 df = give_sliding_window_volatility(df, 4, "fx")
@@ -121,6 +123,8 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - F1-score
 - ROC AUC
 - R-squared (pseudo)
+
+---
 
 # PCA intuition
 
