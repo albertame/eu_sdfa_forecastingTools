@@ -124,6 +124,9 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ![](Robert_ModelResults.png)
 
+Out of the 5 models observed, it was built an ensemble of them all having an optimisation function that applies different weights in order to get a better RMSE for the ensemble built
+
+
 ---
 
 # Hyperparameters tuning
