@@ -102,6 +102,12 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 # Benchmarking
 
+- define train and test datasets
+- define forecast horizon
+- define set of regressors
+
+### Models
+
 - OLS
 - Random Forest
 - Ridge
