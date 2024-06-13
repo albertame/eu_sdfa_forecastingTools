@@ -31,16 +31,19 @@ Tiago, Vittorio, Georgios, Nikolaos, Robert, Francesco, Thomas
 
 ## Gepetto di Firenze
 
+---
+
 # Data exploration
 
 Mixed frequency data (daily, monthly, quarterly):
+
 - Global Liquidity Indicators
 - Bank Loans
 - Real Residential Property Prices
 - Consumer Prices
 - Bank Credit to PNFS
 - Total Credit to PNFS
-- Debt service ratio 
+- Debt service ratio
 - Policy Rate
 - Yield Curve data
 - Exchange rates
@@ -120,7 +123,9 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - F1-score
 - ROC AUC
 - R-squared (pseudo)
+
 ---
+
 ![](output_random_forest.png)
 ![](output_shapley_2.png)
 
