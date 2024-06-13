@@ -140,8 +140,8 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - F1-score
 - ROC AUC
 - R-squared (pseudo)
-
 ---
+![](output_shapley.png)
 
 ![h:450](AUC.png)
 In general, an AUC of 0.5 suggests no discrimination (i.e., ability to diagnose patients with and without the disease or condition based on the test), 0.7 to 0.8 is considered acceptable, 0.8 to 0.9 is considered excellent, and more than 0.9 is considered outstanding.
