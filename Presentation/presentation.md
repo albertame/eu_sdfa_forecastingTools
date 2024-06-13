@@ -63,8 +63,8 @@ df = calculate_growth_rates(df, yoy_variables)
 df = get_lagged_variables(df, 2, lag2_variables)
 df = add_missing_variables(df, country)
 df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
-
 ```
+![](input_variables.png)
 
 ---
 
