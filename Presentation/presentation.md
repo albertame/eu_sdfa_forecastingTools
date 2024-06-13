@@ -191,6 +191,9 @@ It seems to be too late, however, COVID-19 is exogenous and could not have been 
 
 ![](Robert_results.png)
 
+Testing showed that the model was able to anticipate the crisis 3 months before (Covid period) and was also able to capture the geopolitical impact in comparison to the target variable
+
+
 ---
 
 # Next steps
