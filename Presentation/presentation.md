@@ -4,6 +4,14 @@ class: invert
 title: Forcasting and nowcasting
 ---
 
+<!--
+Add your stuff data and texts for the presentation here, I can generate a powerpoint/pdf from this. We can present that one in front of the group.
+
+Add new slides by using three dashes (---)
+add images using ![](input_variables.png).
+Markdown rules apply
+-->
+
 # Forcasting and nowcasting
 
 ### Towards predicting the next financial crisis
@@ -64,6 +72,7 @@ df = get_lagged_variables(df, 2, lag2_variables)
 df = add_missing_variables(df, country)
 df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 ```
+
 ![](input_variables.png)
 
 ---
