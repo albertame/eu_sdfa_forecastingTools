@@ -98,7 +98,7 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 - Systemic crisis _(dummy)_
 - Systemic stress _continuous_
-- Inflaction _?_
+- Inflation _?_
 
 ---
 
