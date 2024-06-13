@@ -54,12 +54,11 @@ clf = LogisticRegression(random_state=0).fit(X_TRAIN, Y_TRAIN)
 predictions = clf.predict(X_GOLD)
 
 plt.figure(figsize=(10, 5))
-plt.plot(Y_GOLD, label='True Values', marker='o')
+plt.plot(np.array(Y_GOLD), label='True Values', marker='o')
 plt.plot(predictions, label='Predictions', marker='x')
 plt.title('Logistic Regression Predictions vs True Values')
 plt.xlabel('Sample Index')
 plt.ylabel('Class')
 plt.legend()
 plt.show()
-
-#%% Imports
+# %%

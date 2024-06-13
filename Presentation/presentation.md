@@ -6,26 +6,41 @@ title: Forcasting and nowcasting
 
 # Forcasting and nowcasting
 
-Alberto, Vittorio, Georgios, Nicholas, Robert, Francesco, Tiago, Thomas,
+### Towards predicting the next financial crisis
+
+---
+
+# Presentation overview
+
+- Our plan
+- Descriptive statistics
+- Benchmark model
+- Principal component analysis
+- Results
+- Next steps
 
 ---
 
 # Plan
 
-1. Data exploration
-2. Data preperation
-3. Data pre-processing
-4. Model training
+1. explore the dataset
+2. define a target variable
+3. feature selection and preprocessing
+4. choose models for initial benchmarking
+5. choose evaluation metrics
+6. _Hyperparameter tuning_
+7. _Integrate MLFLOW to store experiments results_
+8. _evaluate the models peformance_
 
 ---
 
-# 1.1 Exploration
+# Exploration
 
 Descriptive statistics
 
 ---
 
-# 2.1 Data preperation pipeline
+# 1.1 Data preperation pipeline
 
 ```python
 COUNTRY = 'DE'
@@ -40,7 +55,7 @@ df = subselect_data(df)
 
 ---
 
-# 2.2 Data preperation pipeline
+# 1.2 Data preperation pipeline
 
 ```python
 df = give_sliding_window_volatility(df, 4, "fx")
@@ -53,7 +68,15 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
-# 3.1 PCA intuition
+# Target value
+
+- Systemic crisis _(dummy)_
+- Systemic stress _continuous_
+- Inflaction _?_
+
+---
+
+# PCA intuition
 
 - Principal component analysis (PCA) reduces the number of dimensions in large datasets to principal components
 - Retain original information.
@@ -63,19 +86,28 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
-# 3.2 PCA Pipeline
+# PCA Pipeline
 
 ```python
+from sklearn.decomposition import PCA
+
 pca = PCA()
 principalComponents = pca.fit_transform(X_SCALED)
 PCA_components = pd.DataFrame(principalComponents)
 
 explained_variance_ratio = pca.explained_variance_ratio_
-target_variance = 0.80
-current_variance = 0.0
-num_features = 0
+_target_variance = 0.80
+_current_variance = 0.0
+_num_features = 0
 
-while current_variance < target_variance:
-    current_variance += explained_variance_ratio[num_features]
-    num_features += 1
+while _current_variance < _target_variance:
+    _current_variance += explained_variance_ratio[num_features]
+    _num_features += 1
+
 ```
+
+---
+
+# PCA - preprocessed result
+
+![](20240613_PCA-output.png)
