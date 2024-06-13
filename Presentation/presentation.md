@@ -87,6 +87,23 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
+# Benchmarking
+
+- OLS
+- Random Forest
+- Ridge
+- XGBoost
+- Logistic Regression
+
+---
+
+# Model interpretability and evaluation
+
+- Shapley values
+- Permutation importance
+- RMSE
+- R-squared (pseudo)
+
 # PCA intuition
 
 - Principal component analysis (PCA) reduces the number of dimensions in large datasets to principal components
