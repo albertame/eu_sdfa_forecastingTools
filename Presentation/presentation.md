@@ -147,6 +147,7 @@ Out of the 5 models observed, it was built an ensemble of them all having an opt
 ![](output_shapley.png)
 
 ![h:450](AUC.png)
+
 In general, an AUC of 0.5 suggests no discrimination (i.e., ability to diagnose patients with and without the disease or condition based on the test), 0.7 to 0.8 is considered acceptable, 0.8 to 0.9 is considered excellent, and more than 0.9 is considered outstanding.
 
 ---
