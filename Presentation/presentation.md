@@ -61,17 +61,6 @@ Tiago, Vittorio, Georgios, Nikolaos, Robert, Francesco, Thomas
 
 # Exploration
 
-| loansPnfs_yoy | resPropPrice | cpi_yoy  | fx       | totalCreditPnfs2GDP | totalCreditPnfsLCY | dsrPnfs  | dsrHousehold | dsrNfc   | policyRate | spotRate10year | EAtermSpread | spotRate2year | bankCreditPnfs | UStermSpread | financialStressIndex | financialStressDummy |
-| ------------- | ------------ | -------- | -------- | ------------------- | ------------------ | -------- | ------------ | -------- | ---------- | -------------- | ------------ | ------------- | -------------- | ------------ | -------------------- | -------------------- |
-| 192.000       | 3571.000     | 6397.000 | 5673.000 | 4014.000            | 4313.000           | 1300.000 | 1000.000     | 1000.000 | 3407.000   | 80.000         | 80.000       | 80.000        | 4186.000       | 193.000      | 4147.000             | 5275.000             |
-| 4.473         | 87.228       | 9.984    | 8.107    | 124.944             | 2709.235           | 16.129   | 9.101        | 42.058   | 7.619      | 1.962          | 0.992        | 0.970         | 771.099        | 0.864        | 0.134                | 0.116                |
-| 4.398         | 34.074       | 69.120   | 36.002   | 65.045              | 6816.442           | 6.198    | 4.398        | 9.768    | 52.751     | 1.614          | 0.768        | 1.628         | 1517.107       | 0.909        | 0.101                | 0.316                |
-| -8.245        | 26.502       | -25.185  | 0.002    | 20.600              | 0.086              | 5.100    | 2.900        | 22.200   | -0.750     | -0.546         | -0.407       | -0.818        | 0.056          | -1.270       | 0.011                | 0.000                |
-| 0.938         | 57.086       | 1.468    | 0.764    | 80.025              | 78.723             | 11.100   | 6.100        | 35.275   | 3.000      | 0.419          | 0.357        | -0.589        | 54.896         | 0.194        | 0.065                | 0.000                |
-| 4.438         | 89.047       | 3.008    | 0.903    | 111.900             | 389.707            | 16.200   | 7.300        | 43.100   | 4.661      | 2.072          | 0.956        | 0.309         | 184.744        | 0.799        | 0.101                | 0.000                |
-| 7.675         | 108.382      | 6.374    | 1.719    | 153.075             | 1930.761           | 20.400   | 11.200       | 49.300   | 7.815      | 3.493          | 1.665        | 2.478         | 687.356        | 1.493        | 0.172                | 0.000                |
-| 14.662        | 218.092      | 1758.696 | 403.124  | 440.000             | 69362.120          | 32.200   | 23.600       | 70.000   | 2022.142   | 4.470          | 2.418        | 4.203         | 8946.007       | 2.801        | 0.853                | 1.000                |
-
 ---
 
 # Data preperation pipeline
@@ -137,7 +126,6 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 Out of the 5 models observed, it was built an ensemble of them all having an optimisation function that applies different weights in order to get a better RMSE for the ensemble built
 
-
 ---
 
 # Hyperparameters tuning
@@ -156,13 +144,15 @@ Out of the 5 models observed, it was built an ensemble of them all having an opt
 - R-squared (pseudo)
 
 ---
+
 <<<<<<< HEAD
 ![](output_random_forest.png)
 ![](output_shapley_2.png)
 =======
 
 ![](output_shapley.png)
->>>>>>> f50ac94 (adds dumb table)
+
+> > > > > > > f50ac94 (adds dumb table)
 
 ![h:450](AUC.png)
 
@@ -215,7 +205,6 @@ It seems to be too late, however, COVID-19 is exogenous and could not have been 
 
 Testing showed that the model was able to anticipate the crisis 3 months before (Covid period) and was also able to capture the geopolitical impact in comparison to the target variable
 
-
 ---
 
 # Next steps
@@ -228,4 +217,3 @@ Testing showed that the model was able to anticipate the crisis 3 months before 
 - Benchmark against commercial forecast (eg Bloomberg, Turnleaf)
 
 - Public GIT repo to share knowledge amongst institutions
-
