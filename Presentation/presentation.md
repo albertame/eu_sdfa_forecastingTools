@@ -4,9 +4,26 @@ class: invert
 title: Forcasting and nowcasting
 ---
 
+<!--
+Add your stuff data and texts for the presentation here, I can generate a powerpoint/pdf from this. We can present that one in front of the group.
+
+Add new slides by using three dashes (---)
+add images using ![](input_variables.png).
+Markdown and html rules apply
+
+-->
+
 # Forcasting and nowcasting
 
 ### Towards predicting the next financial crisis
+
+#### Mentor:
+
+Alberto Americo
+
+#### Participants:
+
+Tiago, Vittorio, Georgios, Nikolaos, Robert, Francesco, Thomas
 
 ---
 
@@ -40,7 +57,7 @@ Descriptive statistics
 
 ---
 
-# 1.1 Data preperation pipeline
+# Data preperation pipeline
 
 ```python
 COUNTRY = 'DE'
@@ -55,7 +72,7 @@ df = subselect_data(df)
 
 ---
 
-# 1.2 Data preperation pipeline
+# Data preperation pipeline
 
 ```python
 df = give_sliding_window_volatility(df, 4, "fx")
@@ -64,7 +81,10 @@ df = get_lagged_variables(df, 2, lag2_variables)
 df = add_missing_variables(df, country)
 df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 ```
-![](input_variables.png)
+
+---
+
+![height:600](input_variables.png)
 
 ---
 
@@ -74,7 +94,35 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - Systemic stress _continuous_
 - Inflaction _?_
 
+---
+
 ![](target_variables.png)
+
+---
+
+# Benchmarking
+
+- OLS
+- Random Forest
+- Ridge
+- XGBoost
+- Logistic Regression
+
+---
+
+# Hyperparameters tuning
+
+- GridSearchCV with TimeSeriesSplit
+---
+
+# Model interpretability and evaluation
+
+- Shapley values
+- Permutation importance
+- RMSE
+- F1-score
+- ROC AUC
+- R-squared (pseudo)
 
 ---
 
