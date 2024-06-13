@@ -187,6 +187,20 @@ It seems to be too late, however, COVID-19 is exogenous and could not have been 
 
 ---
 
-# Result Robert
+# Result Robert alternative approach
 
 ![](Robert_results.png)
+
+---
+
+# Next steps
+
+- Expand country coverage
+- Try aggregate model
+- Increase data frequency
+- Try different forecast horizons
+- Improve feature selection process
+- Benchmark against commercial forecast (eg Bloomberg, Turnleaf)
+
+- Public GIT repo to share knowledge amongst institutions
+
