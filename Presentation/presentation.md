@@ -102,6 +102,8 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - Shapley values
 - Permutation importance
 - RMSE
+- F1-score
+- ROC AUC
 - R-squared (pseudo)
 
 # PCA intuition
