@@ -144,7 +144,8 @@ Out of the 5 models observed, it was built an ensemble of them all having an opt
 - ROC AUC
 - R-squared (pseudo)
 ---
-![](output_shapley.png)
+![](output_random_forest.png)
+![](output_shapley_2.png)
 
 ![h:450](AUC.png)
 
