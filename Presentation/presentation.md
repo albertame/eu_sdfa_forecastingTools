@@ -2,6 +2,12 @@
 marp: true
 class: invert
 title: Forcasting and nowcasting
+style: |
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
 ---
 
 <!--
@@ -9,7 +15,8 @@ Add your stuff data and texts for the presentation here, I can generate a powerp
 
 Add new slides by using three dashes (---)
 add images using ![](input_variables.png).
-Markdown rules apply
+Markdown and html rules apply
+
 -->
 
 # Forcasting and nowcasting
@@ -73,7 +80,9 @@ df = add_missing_variables(df, country)
 df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 ```
 
-![](input_variables.png)
+---
+
+![height:600](input_variables.png)
 
 ---
 
@@ -82,6 +91,8 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - Systemic crisis _(dummy)_
 - Systemic stress _continuous_
 - Inflaction _?_
+
+---
 
 ![](target_variables.png)
 
