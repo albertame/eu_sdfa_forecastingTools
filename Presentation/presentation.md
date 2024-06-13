@@ -11,6 +11,8 @@ Add new slides by using three dashes (---)
 add images using ![](input_variables.png).
 Markdown and html rules apply
 
+Next time lets make the presentation in Jupyter again. I am not really a fan of this marp. Sorry guys.
+
 -->
 
 # Forcasting and nowcasting
