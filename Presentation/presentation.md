@@ -11,8 +11,6 @@ Add new slides by using three dashes (---)
 add images using ![](input_variables.png).
 Markdown and html rules apply
 
-Next time lets make the presentation in Jupyter again. I am not really a fan of this marp. Sorry guys.
-
 -->
 
 # Forcasting and nowcasting
@@ -33,33 +31,19 @@ Tiago, Vittorio, Georgios, Nikolaos, Robert, Francesco, Thomas
 
 ## Gepetto di Firenze
 
----
+# Data exploration
 
-# Presentation overview
-
-- Our plan
-- Descriptive statistics
-- Benchmark model
-- Principal component analysis
-- Results
-- Next steps
-
----
-
-# Plan
-
-1. explore the dataset
-2. define a target variable
-3. feature selection and preprocessing
-4. choose models for initial benchmarking
-5. choose evaluation metrics
-6. _Hyperparameter tuning_
-7. _Integrate MLFLOW to store experiments results_
-8. _evaluate the models peformance_
-
----
-
-# Exploration
+Mixed frequency data (daily, monthly, quarterly):
+- Global Liquidity Indicators
+- Bank Loans
+- Real Residential Property Prices
+- Consumer Prices
+- Bank Credit to PNFS
+- Total Credit to PNFS
+- Debt service ratio 
+- Policy Rate
+- Yield Curve data
+- Exchange rates
 
 ---
 
@@ -106,7 +90,7 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
-# Benchmarking
+# Benchmarking (with MLflow)
 
 - define train and test datasets
 - define forecast horizon
@@ -119,12 +103,6 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - Ridge
 - XGBoost
 - Logistic Regression
-
----
-
-![](Robert_ModelResults.png)
-
-Out of the 5 models observed, it was built an ensemble of them all having an optimisation function that applies different weights in order to get a better RMSE for the ensemble built
 
 ---
 
@@ -142,17 +120,9 @@ Out of the 5 models observed, it was built an ensemble of them all having an opt
 - F1-score
 - ROC AUC
 - R-squared (pseudo)
-
 ---
-
-<<<<<<< HEAD
 ![](output_random_forest.png)
 ![](output_shapley_2.png)
-=======
-
-![](output_shapley.png)
-
-> > > > > > > f50ac94 (adds dumb table)
 
 ![h:450](AUC.png)
 
@@ -201,6 +171,10 @@ It seems to be too late, however, COVID-19 is exogenous and could not have been 
 
 # Result Robert alternative approach
 
+![](Robert_ModelResults.png)
+
+Out of the 5 models observed, it was built an ensemble of them all having an optimisation function that applies different weights in order to get a better RMSE for the ensemble built
+
 ![](Robert_results.png)
 
 Testing showed that the model was able to anticipate the crisis 3 months before (Covid period) and was also able to capture the geopolitical impact in comparison to the target variable
@@ -215,5 +189,5 @@ Testing showed that the model was able to anticipate the crisis 3 months before 
 - Try different forecast horizons
 - Improve feature selection process
 - Benchmark against commercial forecast (eg Bloomberg, Turnleaf)
-
+- Improve model interpretability
 - Public GIT repo to share knowledge amongst institutions
