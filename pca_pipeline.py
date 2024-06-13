@@ -65,4 +65,3 @@ plt.xlabel('Sample Index')
 plt.ylabel('Class')
 plt.legend()
 plt.show()
-# %%

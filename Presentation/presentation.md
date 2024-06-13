@@ -113,3 +113,4 @@ while _current_variance < _target_variance:
 # PCA - preprocessed result
 
 ![](20240613_PCA-output.png)
+It seems to be too late, however, COVID-19 is exogenous and could not have been predicted. However, result is stable
