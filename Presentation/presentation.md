@@ -74,6 +74,8 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - Systemic stress _continuous_
 - Inflaction _?_
 
+![](target_variables.png)
+
 ---
 
 # PCA intuition
