@@ -87,7 +87,7 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
-# Benchmarking
+# Benchmarking and hyperparameters tuning
 
 - OLS
 - Random Forest
