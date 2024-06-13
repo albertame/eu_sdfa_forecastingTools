@@ -98,7 +98,7 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
-# Benchmarking and hyperparameters tuning
+# Benchmarking
 
 - OLS
 - Random Forest
@@ -106,6 +106,11 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - XGBoost
 - Logistic Regression
 
+---
+
+# Hyperparameters tuning
+
+- GridSearchCV with TimeSeriesSplit
 ---
 
 # Model interpretability and evaluation
