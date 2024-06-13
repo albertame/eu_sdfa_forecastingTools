@@ -24,7 +24,7 @@ Y_VARIABLE = "is_systemic_crisis"
 X_EXCLUSION = ["is_systemic_crisis"]
 
 x_SPLIT, y_SPLIT = get_xy_split(df, X_EXCLUSION, Y_VARIABLE)
-y_SPLIT = y_SPLIT.reset_index(drop=True)
+# y_SPLIT = y_SPLIT.reset_index(drop=True)
 
 X_SCALED = StandardScaler().fit_transform(x_SPLIT)
 
@@ -53,9 +53,13 @@ Y_GOLD = y_SPLIT[FILTER_NUMBER:]
 clf = LogisticRegression(random_state=0).fit(X_TRAIN, Y_TRAIN)
 predictions = clf.predict(X_GOLD)
 
+Y_GOLD = y_SPLIT[FILTER_NUMBER:]
+df_pred = pd.DataFrame(Y_GOLD)
+df_pred["predictions"] = predictions
+
 plt.figure(figsize=(10, 5))
-plt.plot(np.array(Y_GOLD), label='True Values', marker='o')
-plt.plot(predictions, label='Predictions', marker='x')
+plt.plot(df_pred["is_systemic_crisis"], label='True Values', marker='o')
+plt.plot(df_pred["predictions"], label='Predictions', marker='x')
 plt.title('Logistic Regression Predictions vs True Values')
 plt.xlabel('Sample Index')
 plt.ylabel('Class')
