@@ -27,6 +27,12 @@ Tiago, Vittorio, Georgios, Nikolaos, Robert, Francesco, Thomas
 
 ---
 
+### "Data modeling is where art meets science. It requires the precision of a mathematician, the creativity of an artist, and the judgment of an experienced craftsman to transform raw data into valuable insights.“
+
+## Gepetto di Firenze
+
+---
+
 # Presentation overview
 
 - Our plan
@@ -116,9 +122,14 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 
 ---
 
+![](Robert_ModelResults.png)
+
+---
+
 # Hyperparameters tuning
 
 - GridSearchCV with TimeSeriesSplit
+
 ---
 
 # Model interpretability and evaluation
@@ -129,6 +140,11 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 - F1-score
 - ROC AUC
 - R-squared (pseudo)
+
+---
+
+![h:450](AUC.png)
+In general, an AUC of 0.5 suggests no discrimination (i.e., ability to diagnose patients with and without the disease or condition based on the test), 0.7 to 0.8 is considered acceptable, 0.8 to 0.9 is considered excellent, and more than 0.9 is considered outstanding.
 
 ---
 
@@ -168,3 +184,9 @@ while _current_variance < _target_variance:
 
 ![](20240613_PCA-output.png)
 It seems to be too late, however, COVID-19 is exogenous and could not have been predicted. However, result is stable
+
+---
+
+# Result Robert
+
+![](Robert_results.png)
