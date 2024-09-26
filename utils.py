@@ -152,3 +152,46 @@ def subselect_data(df, start_year = '1970'):
     df = df[df.index > start_year]
     df = df.dropna(axis=1)
     return df
+
+def plot_target_variables(df):
+
+    fig, ax1 = plt.subplots()
+
+    # Plot the first time series
+    ax1.plot(df['financialStressIndex'][df.index > '1970'].rolling(12).mean(), color='b', label='Financial stress index')
+    ax1.set_xlabel('Date')
+    ax1.set_ylabel('Financial stress index', color='b')
+    ax1.tick_params(axis='y', labelcolor='b')
+
+    # Create a second y-axis
+    ax2 = ax1.twinx()
+    ax2.plot(df['is_systemic_crisis'][df.index > '1970'], color='r', label='Systemic crisis dummy')
+    ax2.set_ylabel('Systemic crisis dummy', color='r')
+    ax2.tick_params(axis='y', labelcolor='r')
+
+    ax2.grid(False)
+
+    # Add a title and legend
+    plt.title('Target variables')
+    fig.tight_layout()
+    fig.legend(loc="lower center", bbox_to_anchor=(0.5,-0.1))
+
+    # Show the plot
+    plt.show()
+
+def plot_all_variables(df):
+    fig, axes = plt.subplots(5, 4, figsize=(20, 15))
+
+    # Flatten the axes array for easy iteration
+    axes = axes.flatten()
+
+    # Loop through each column and plot it on the respective subplot
+    for i, col in enumerate([c for c in df.columns if c not in ['is_systemic_crisis','financialStressIndex_movingAverage']]):
+        axes[i].plot(df[col][df.index > '1970'])
+        axes[i].set_title(col)
+
+    # Adjust layout
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()

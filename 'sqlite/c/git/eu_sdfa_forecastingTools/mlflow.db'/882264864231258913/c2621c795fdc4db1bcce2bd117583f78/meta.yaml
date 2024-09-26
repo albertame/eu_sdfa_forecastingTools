@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/882264864231258913/c2621c795fdc4db1bcce2bd117583f78/artifacts
+end_time: 1727172145936
+entry_point_name: ''
+experiment_id: '882264864231258913'
+lifecycle_stage: active
+run_id: c2621c795fdc4db1bcce2bd117583f78
+run_name: inflation-20240924-xgb-financialStressIndex_movingAverage-model_4
+run_uuid: c2621c795fdc4db1bcce2bd117583f78
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727172139972
+status: 3
+tags: []
+user_id: al005366

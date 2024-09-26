@@ -127,6 +127,9 @@ df = add_systemic_risk_dummy_with_df(df, df_dummies, country)
 ---
 
 ![](output_random_forest.png)
+
+---
+
 ![](output_shapley_2.png)
 
 ---
@@ -170,16 +173,21 @@ It seems to be too late, however, COVID-19 is exogenous and could not have been 
 
 ---
 
-# Result Robert alternative approach
-
+# Results of Robert alternative approach
+---
 ![](Robert_ModelResults.png)
 
+---
+
 Out of the 5 models observed, it was built an ensemble of them all having an optimisation function that applies different weights in order to get a better RMSE for the ensemble built
+
+---
 
 ![h:450](AUC.png)
 
 In general, an AUC of 0.5 suggests no discrimination (i.e., ability to diagnose patients with and without the disease or condition based on the test), 0.7 to 0.8 is considered acceptable, 0.8 to 0.9 is considered excellent, and more than 0.9 is considered outstanding.
 
+---
 ![](Robert_results.png)
 
 Testing showed that the model was able to anticipate the crisis 3 months before (Covid period) and was also able to capture the geopolitical impact in comparison to the target variable
